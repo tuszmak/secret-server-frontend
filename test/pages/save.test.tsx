@@ -10,7 +10,6 @@ import "@testing-library/jest-dom";
 import { userEvent } from "@testing-library/user-event";
 import Home from "@/pages";
 import { describe } from "node:test";
-
 beforeEach(() => {
   render(<Save />);
 });
@@ -41,9 +40,11 @@ describe("State when there's no link", () => {
         json: () => Promise.resolve({ text: "foo" }),
       })
     ) as jest.Mock;
-
+    const originalAlert = window.alert;
+    window.alert = jest.fn();
     const submitButton = screen.getByTestId("submitButton");
     await userEvent.click(submitButton);
-    expect(global.fetch).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalled();
+    window.alert = originalAlert;
   });
 });

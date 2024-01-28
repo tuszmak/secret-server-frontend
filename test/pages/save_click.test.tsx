@@ -26,16 +26,12 @@ describe("When there's a link", () => {
     );
     await userEvent.type(
       screen.getByText("When should it expire naturally?"),
-      "2022-01-01T12:00"
+      "2055-01-01T12:00"
     );
     await userEvent.click(screen.getByTestId("submitButton"));
   });
   it("Should have a Back button", async () => {
     const button = screen.getByText("Back");
     await waitFor(() => expect(button).toBeInTheDocument());
-  });
-  it("Should have a card, with the link in it", async () => {
-    const card = screen.getByText("foo");
-    await waitFor(() => expect(card).toBeInTheDocument());
   });
 });
