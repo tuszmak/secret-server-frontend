@@ -3,6 +3,7 @@ import ExpiryDateInput from "@/components/ExpiryDateInput";
 import NumberInput from "@/components/NumberInput";
 import SecretCard from "@/components/SecretCard";
 import TextInput from "@/components/TextInput";
+import dataChecker from "@/utils/dataChecker";
 import React, { useState } from "react";
 
 type SecretCreationData = {
@@ -15,29 +16,23 @@ function Save() {
   const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [link, setLink] = useState<string>("");
-  console.log(expiryDate);
-  
   const handleSubmit = async () => {
-    let dateStringAsDate = Date.parse(expiryDate)
-    if(dateStringAsDate < Date.now()){
-      alert("The given date has already expired!")
-      return
-    }
-    else if(isNaN(dateStringAsDate)){
-      alert("This date is too far in the future!")
-      return
-    }
+    
     const data: SecretCreationData = {
       secret,
       numberOfVisits,
       expiryDate,
     };
+    let checkValue = dataChecker(data)
+    if(checkValue !== "Cool!"){
+      alert(checkValue)
+      return
+    }
     const response = await fetch("/api/v1/secret", {
       method: "POST",
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      console.log("yay!");
       const responseLink = await response.text();
       setLink(responseLink);
     }
@@ -60,12 +55,12 @@ function Save() {
       <div className="flex flex-col items-center gap-3">
         <TextInput handleChange={(e: string) => setSecret(e)} />
         <NumberInput handleChange={(e: number) => setNumberOfVisits(e)} />
-        <ExpiryDateInput handleChange={(e: string) => {
-          setExpiryDate(e)
-          console.log(expiryDate);
-          
-        }} />
-        <button className="btn btn-primary mt-8" onClick={handleSubmit} data-testid="submitButton">
+        <ExpiryDateInput handleChange={(e: string) => setExpiryDate(e)} />
+        <button
+          className="btn btn-primary mt-8"
+          onClick={handleSubmit}
+          data-testid="submitButton"
+        >
           Submit
         </button>
       </div>
