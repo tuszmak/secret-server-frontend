@@ -1,9 +1,3 @@
-type SecretCreationData = {
-  secret: string;
-  numberOfVisits: number;
-  expiryDate: string;
-};
-
 export default function dataChecker(data: SecretCreationData) {
   let dateStringAsDate = Date.parse(data.expiryDate);
   if (dateStringAsDate < Date.now()) {

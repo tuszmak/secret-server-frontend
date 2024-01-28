@@ -6,11 +6,7 @@ import TextInput from "@/components/TextInput";
 import dataChecker from "@/utils/dataChecker";
 import React, { useState } from "react";
 
-type SecretCreationData = {
-  secret: string;
-  numberOfVisits: number;
-  expiryDate: string;
-};
+
 function Save() {
   const [secret, setSecret] = useState<string>("");
   const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
