@@ -1,0 +1,38 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "test-watch": "jest --watchAll"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/jest": "^29.5.11",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "daisyui": "^3.8.1",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "postcss": "latest",
+    "tailwindcss": "latest",
+    "ts-jest": "^29.1.1",
+    "typescript": "latest"
+  }
+}
