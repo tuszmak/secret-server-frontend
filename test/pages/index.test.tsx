@@ -19,7 +19,7 @@ describe("Render", () => {
   });
   //This test is temporary, as is the sample text.
   it("Should have a paragraph with sample text in it", () => {
-    const paragraph = screen.getByText(/Provident/i);
+    const paragraph = screen.getByText(/retrieve/i);
     expect(paragraph).toBeInTheDocument();
   });
   it("Should have a button, with create secret text", () => {
