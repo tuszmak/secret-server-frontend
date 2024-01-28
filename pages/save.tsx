@@ -16,6 +16,10 @@ function Save() {
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const handleSubmit = async () => {
+    if(Date.parse(expiryDate) < Date.now()){
+        alert("The given date has already expired!")
+        return
+    }
     const data: SecretCreationData = {
       secret,
       numberOfVisits,
