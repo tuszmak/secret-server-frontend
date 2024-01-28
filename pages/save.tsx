@@ -15,10 +15,17 @@ function Save() {
   const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
   const [expiryDate, setExpiryDate] = useState<string>("");
   const [link, setLink] = useState<string>("");
+  console.log(expiryDate);
+  
   const handleSubmit = async () => {
-    if(Date.parse(expiryDate) < Date.now()){
-        alert("The given date has already expired!")
-        return
+    let dateStringAsDate = Date.parse(expiryDate)
+    if(dateStringAsDate < Date.now()){
+      alert("The given date has already expired!")
+      return
+    }
+    else if(isNaN(dateStringAsDate)){
+      alert("This date is too far in the future!")
+      return
     }
     const data: SecretCreationData = {
       secret,
@@ -53,7 +60,11 @@ function Save() {
       <div className="flex flex-col items-center gap-3">
         <TextInput handleChange={(e: string) => setSecret(e)} />
         <NumberInput handleChange={(e: number) => setNumberOfVisits(e)} />
-        <ExpiryDateInput handleChange={(e: string) => setExpiryDate(e)} />
+        <ExpiryDateInput handleChange={(e: string) => {
+          setExpiryDate(e)
+          console.log(expiryDate);
+          
+        }} />
         <button className="btn btn-primary mt-8" onClick={handleSubmit} data-testid="submitButton">
           Submit
         </button>
