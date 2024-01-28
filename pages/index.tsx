@@ -17,7 +17,7 @@ export default function Home() {
             <div className="max-w-md">
               <h1 className="text-5xl font-bold">Hello there</h1>
               <p className="py-6">
-              Do you have a secret that you don't want to leak? 
+              Do you have a secret that you don&apos;t want to leak? 
               Use this website to store and retrieve your secrets securely! 
               </p>
               <div className="flex justify-evenly">
