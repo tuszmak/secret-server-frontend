@@ -17,9 +17,8 @@ export default function Home() {
             <div className="max-w-md">
               <h1 className="text-5xl font-bold">Hello there</h1>
               <p className="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+              Do you have a secret that you don't want to leak? 
+              Use this website to store and retrieve your secrets securely! 
               </p>
               <div className="flex justify-evenly">
                 <Link href="/save"><button className="btn btn-primary">Create secret</button></Link>
