@@ -14,10 +14,11 @@ function Save() {
   const [link, setLink] = useState<string>("");
   const handleSubmit = async () => {
     
+    const isoDate = new Date(expiryDate).toISOString()
     const data: SecretCreationData = {
       secret,
       numberOfVisits,
-      expiryDate,
+      expiryDate: isoDate,
     };
     let checkValue = dataChecker(data)
     if(checkValue !== "Cool!"){
