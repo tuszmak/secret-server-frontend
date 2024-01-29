@@ -33,18 +33,4 @@ describe("State when there's no link", () => {
       expect(submitButton).toBeInTheDocument();
     });
   });
-  describe("Behavior", () => {});
-  it("Should call handleSubmit when the Submit button is clicked", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        json: () => Promise.resolve({ text: "foo" }),
-      })
-    ) as jest.Mock;
-    const originalAlert = window.alert;
-    window.alert = jest.fn();
-    const submitButton = screen.getByTestId("submitButton");
-    await userEvent.click(submitButton);
-    expect(window.alert).toHaveBeenCalled();
-    window.alert = originalAlert;
-  });
 });

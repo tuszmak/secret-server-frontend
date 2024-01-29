@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 interface Props {
-    handleChange: (e: string) => void; 
+    handleChange: (e: Date) => void; 
 }
 function ExpiryDateInput({handleChange}: Props) {
   return (
@@ -14,7 +14,7 @@ function ExpiryDateInput({handleChange}: Props) {
         type="datetime-local"
         placeholder="Type here"
         className="input input-bordered w-full max-w-xs"
-        onChange={(e)=>{handleChange(e.target.value)}}
+        onChange={(e)=>{handleChange(new Date(e.target.value))}}
         min={1}
         required
       />
