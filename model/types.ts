@@ -1,5 +1,5 @@
 interface Secret{
-    secret: string
+    secret_text: string
 }
 interface SecretFetchRequest{
     hash: string

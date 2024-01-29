@@ -9,18 +9,17 @@ export default function GetSecret() {
     const request: SecretFetchRequest = {
       hash: hash,
     };
-    const response = await fetch("/api/v1/getSecret", {
-      body: JSON.stringify(request),
-      method: "POST",
+    const response = await fetch(`/api/v1/secret/${hash}`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
     const secret: Secret = await response.json();
-    if(!secret.secret){
+    if(!secret.secret_text){
       alert("Your code doesn't have a secret")
     }
-    setSecretString(secret.secret);
+    setSecretString(secret.secret_text);
   };
   return secretString ? (
     <div>
