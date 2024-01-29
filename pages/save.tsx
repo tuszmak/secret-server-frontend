@@ -8,16 +8,17 @@ import React, { useState } from "react";
 
 
 function Save() {
-  const [secret, setSecret] = useState<string>("");
-  const [numberOfVisits, setNumberOfVisits] = useState<number>(0);
-  const [expiryDate, setExpiryDate] = useState<string>("");
-  const [link, setLink] = useState<string>("");
+  const [secret, setSecret] = useState("");
+  const [numberOfVisits, setNumberOfVisits] = useState(0);
+  const [expiryDate, setExpiryDate] = useState(new Date());
+  const [link, setLink] = useState("");
   const handleSubmit = async () => {
-    
+
+    const isoDate = expiryDate.toISOString()
     const data: SecretCreationData = {
       secret,
       numberOfVisits,
-      expiryDate,
+      expiryDate: isoDate,
     };
     let checkValue = dataChecker(data)
     if(checkValue !== "Cool!"){
@@ -51,7 +52,7 @@ function Save() {
       <div className="flex flex-col items-center gap-3">
         <TextInput handleChange={(e: string) => setSecret(e)} />
         <NumberInput handleChange={(e: number) => setNumberOfVisits(e)} />
-        <ExpiryDateInput handleChange={(e: string) => setExpiryDate(e)} />
+        <ExpiryDateInput handleChange={(d: Date) => setExpiryDate(d)} />
         <button
           className="btn btn-primary mt-8"
           onClick={handleSubmit}

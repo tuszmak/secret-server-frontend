@@ -15,6 +15,9 @@ export default function GetSecret() {
         "Content-Type": "application/json",
       },
     });
+    if(!response.ok){
+      alert("Invalid or expired code.")
+    }
     const secret: Secret = await response.json();
     if(!secret.secret_text){
       alert("Your code doesn't have a secret")
